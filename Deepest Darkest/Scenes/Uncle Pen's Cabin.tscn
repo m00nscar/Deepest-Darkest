@@ -1,0 +1,154 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Camera2D.gd" type="Script" id=2]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Transition.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Bedroom.gd" type="Script" id=5]
+[ext_resource path="res://CabinInterior.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/DarkBackground.png" type="Texture" id=7]
+[ext_resource path="res://CabinStairs.tscn" type="PackedScene" id=8]
+[ext_resource path="res://KitchenIsland.tscn" type="PackedScene" id=9]
+[ext_resource path="res://RecordPlayer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://PottedPlant.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Lamp.tscn" type="PackedScene" id=12]
+[ext_resource path="res://GuitarOnStand.tscn" type="PackedScene" id=13]
+[ext_resource path="res://BanjoOnStand.tscn" type="PackedScene" id=14]
+[ext_resource path="res://InstrumentStand.tscn" type="PackedScene" id=15]
+[ext_resource path="res://RockingChair2.tscn" type="PackedScene" id=16]
+[ext_resource path="res://RockingChair.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Lightbulb.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Lantern.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Endtable.tscn" type="PackedScene" id=20]
+[ext_resource path="res://CabinWindow.tscn" type="PackedScene" id=21]
+[ext_resource path="res://UpstairsDoor.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scenes/Textbox.tscn" type="PackedScene" id=23]
+[ext_resource path="res://RecordPlayerPopup.tscn" type="PackedScene" id=24]
+[ext_resource path="res://LampSwitch.tscn" type="PackedScene" id=25]
+[ext_resource path="res://TextboxLamp.tscn" type="PackedScene" id=26]
+[ext_resource path="res://TriggerLightbulb.tscn" type="PackedScene" id=27]
+
+[sub_resource type="Environment" id=1]
+ambient_light_color = Color( 0.956863, 0.898039, 0.690196, 1 )
+fog_enabled = true
+
+[node name="Uncle Pen\'s Cabin" type="Node2D"]
+position = Vector2( 1, -1 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 193.5, 35 )
+scale = Vector2( 17.5156, 12.125 )
+texture = ExtResource( 7 )
+region_rect = Rect2( -320, -208, 2288, 585.63 )
+
+[node name="CabinInterior" parent="." instance=ExtResource( 6 )]
+position = Vector2( 162, 58 )
+
+[node name="Lightbulb" parent="." instance=ExtResource( 18 )]
+position = Vector2( 231, -18 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 227, 74 )
+
+[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
+position = Vector2( 5, 1 )
+current = true
+smoothing_enabled = true
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="YSort/Player/Camera2D"]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+position = Vector2( 5, 1 )
+remote_path = NodePath("../Camera2D")
+
+[node name="Objects" type="YSort" parent="YSort"]
+
+[node name="KitchenIsland" parent="YSort/Objects" instance=ExtResource( 9 )]
+position = Vector2( 160, 13 )
+
+[node name="CabinStairs" parent="YSort/Objects" instance=ExtResource( 8 )]
+position = Vector2( 237, -43 )
+
+[node name="Endtable" parent="YSort/Objects" instance=ExtResource( 20 )]
+position = Vector2( 80, 48 )
+
+[node name="Lamp" parent="YSort/Objects" instance=ExtResource( 12 )]
+position = Vector2( 80, 48 )
+
+[node name="RecordPlayer" parent="YSort/Objects" instance=ExtResource( 10 )]
+position = Vector2( 150, 104 )
+
+[node name="Lantern" parent="YSort/Objects" instance=ExtResource( 19 )]
+position = Vector2( 164, 104 )
+
+[node name="PottedPlant" parent="YSort/Objects" instance=ExtResource( 11 )]
+position = Vector2( 242, 101 )
+
+[node name="GuitarOnStand" parent="YSort/Objects" instance=ExtResource( 13 )]
+position = Vector2( 104, 96 )
+
+[node name="BanjoOnStand" parent="YSort/Objects" instance=ExtResource( 14 )]
+position = Vector2( 78, 96 )
+
+[node name="InstrumentStand" parent="YSort/Objects" instance=ExtResource( 15 )]
+position = Vector2( 106, 100 )
+
+[node name="RockingChair" parent="YSort/Objects" instance=ExtResource( 17 )]
+position = Vector2( 112, 47 )
+
+[node name="RockingChair2" parent="YSort/Objects" instance=ExtResource( 16 )]
+position = Vector2( 167, 49 )
+
+[node name="Window" parent="YSort/Objects" instance=ExtResource( 21 )]
+position = Vector2( 156, -49 )
+
+[node name="Door" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 214, 125 )
+collision_layer = 1
+next_scene_path = "res://Scenes/World.tscn"
+
+[node name="UpstairsDoor" parent="." instance=ExtResource( 22 )]
+visible = false
+position = Vector2( 239, -58 )
+priority = 1.0
+next_scene_path = "res://Scenes/Bedroom.tscn"
+
+[node name="Transition" parent="." instance=ExtResource( 4 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="TextboxRecordPlayer" parent="." instance=ExtResource( 23 )]
+
+[node name="TextboxLamp" parent="." instance=ExtResource( 26 )]
+
+[node name="TriggerLamp" parent="." instance=ExtResource( 25 )]
+position = Vector2( 81, 64 )
+
+[node name="TriggerRecordPlayer" parent="." instance=ExtResource( 24 )]
+position = Vector2( 143, 91 )
+
+[node name="TriggerLightbulb" parent="." instance=ExtResource( 27 )]
+position = Vector2( 208, 6 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+show_behind_parent = true
+position = Vector2( -1, 1 )
+color = Color( 0.262745, 0.00392157, 0.00392157, 1 )
+
+[connection signal="body_entered" from="TriggerLamp" to="YSort/Objects/Lamp" method="_on_TriggerLamp_body_entered"]
+[connection signal="body_entered" from="TriggerLamp" to="TextboxLamp" method="_on_TriggerLamp_body_entered"]
+[connection signal="body_exited" from="TriggerLamp" to="YSort/Objects/Lamp" method="_on_TriggerLamp_body_exited"]
+[connection signal="body_exited" from="TriggerLamp" to="TextboxRecordPlayer" method="_on_TriggerLamp_body_exited"]
+[connection signal="body_exited" from="TriggerLamp" to="TextboxLamp" method="_on_TriggerLamp_body_exited"]
+[connection signal="body_entered" from="TriggerRecordPlayer" to="TextboxRecordPlayer" method="_on_TriggerRecordPlayer_body_entered"]
+[connection signal="body_exited" from="TriggerRecordPlayer" to="TextboxRecordPlayer" method="_on_TriggerRecordPlayer_body_exited"]
+[connection signal="body_entered" from="TriggerLightbulb" to="Lightbulb" method="_on_TriggerLightbulb_body_entered"]
+[connection signal="body_entered" from="TriggerLightbulb" to="TextboxLamp" method="_on_TriggerLightbulb_body_entered"]
+[connection signal="body_exited" from="TriggerLightbulb" to="Lightbulb" method="_on_TriggerLightbulb_body_exited"]
+[connection signal="body_exited" from="TriggerLightbulb" to="TextboxLamp" method="_on_TriggerLightbulb_body_exited"]

@@ -1,0 +1,4 @@
+[gd_scene format=2]
+
+[node name="Particles2D" type="Particles2D"]
+position = Vector2( -2, 2 )

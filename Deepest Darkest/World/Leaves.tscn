@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://World/AutumnLeaf.png" type="Texture" id=1]
+
+[sub_resource type="Curve" id=1]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.183607, 360 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.980328, 0.653409 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+lifetime_randomness = 0.19
+emission_shape = 2
+emission_box_extents = Vector3( 1000, 480, 1 )
+flag_disable_z = true
+gravity = Vector3( 125, 98, 0 )
+initial_velocity = 15.0
+initial_velocity_random = 0.77
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 26.7
+angle_random = 0.77
+angle_curve = SubResource( 2 )
+scale = 0.5
+scale_curve = SubResource( 4 )
+
+[node name="Particles2D" type="Particles2D"]
+amount = 30
+lifetime = 2.0
+process_material = SubResource( 5 )
+texture = ExtResource( 1 )
