@@ -913,7 +913,7 @@ tile_data = PoolIntArray( 1310724, 0, 2, 1310725, 0, 65537, 1310726, 0, 65537, 1
 [node name="Objects" type="YSort" parent="."]
 
 [node name="Player" parent="Objects" instance=ExtResource( 12 )]
-position = Vector2( 170, 179 )
+position = Vector2( 213, 177 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Objects/Player"]
 position = Vector2( 5, 1 )
@@ -3357,7 +3357,7 @@ process_material = SubResource( 61 )
 texture = ExtResource( 5 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 21 )]
-position = Vector2( 175, 180 )
+position = Vector2( 218, 178 )
 smoothing_enabled = false
 
 [node name="Leaves" parent="." instance=ExtResource( 14 )]
